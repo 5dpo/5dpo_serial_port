@@ -1,6 +1,6 @@
 # 5dpo_ros_serial_port
 
-**Version 0.0.0**
+**Version 0.1.0**
 
 This repository contains a library to handle serial communication. The library
 is based on
@@ -12,6 +12,7 @@ As for the serial communication, the implementation is based on the example
 **With this version, it is possible to do:**
 
 - Serial communication using Boost.Asio
+- Set custom baud rate
 
 ## ROS
 
