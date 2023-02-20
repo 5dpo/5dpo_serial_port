@@ -153,7 +153,7 @@ private:
      */
     void doClose();
 
-public:
+protected:
     std::shared_ptr<AsyncSerialImpl> pimpl;
 
 protected:
@@ -225,6 +225,12 @@ public:
      * be lost.
      */
     void clearCallback();
+
+    /**
+     * Set a custom baud rate, by accessing the
+     * @param baud_rate custom serial baud rate
+     */
+    void setCustomBaudRate(unsigned int baud_rate);
 
     virtual ~CallbackAsyncSerial();
 };

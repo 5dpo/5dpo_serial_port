@@ -36,6 +36,14 @@
 #include <boost/bind.hpp>
 #include <boost/shared_array.hpp>
 
+#define termios asmtermios
+#define termio asmtermio
+#define winsize asmwinsize
+#include <asm/termios.h>
+#undef  termios
+#undef termio
+#undef winsize
+
 using namespace std;
 using namespace boost;
 
@@ -556,6 +564,34 @@ void CallbackAsyncSerial::setCallback(const std::function<void (const char*, siz
 void CallbackAsyncSerial::clearCallback()
 {
     clearReadCallback();
+}
+
+void CallbackAsyncSerial::setCustomBaudRate(unsigned int baud_rate) {
+  // Source:
+  // https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/#custom-baud-rates
+  // also with the help of professor Paulo Costa (serial_alt.pas)
+  boost::asio::serial_port::native_handle_type fd = pimpl->port.native_handle();
+  struct termios2 tty;
+
+  // Read in the terminal settings the serial port settings
+  if (ioctl(fd, TCGETS2, &tty) < 0) {
+    BOOST_THROW_EXCEPTION(std::runtime_error(
+        "[AsyncSerial.cpp] CallbackAsyncSerial::setCustomBaudRate: "
+        "error when calling the ioctl function to get the port settings"));
+  }
+
+  // Set custom baud rate
+  tty.c_cflag &= ~CBAUD;
+  tty.c_cflag |= BOTHER;
+  tty.c_ispeed = baud_rate;
+  tty.c_ospeed = baud_rate;
+
+  // Set modified settings
+  if (ioctl(fd, TCSETS2, &tty) < 0) {
+    BOOST_THROW_EXCEPTION(std::runtime_error(
+        "[AsyncSerial.cpp] CallbackAsyncSerial::setCustomBaudRate: "
+        "error when calling the ioctl function to set the port settings"));
+  }
 }
 
 CallbackAsyncSerial::~CallbackAsyncSerial()
