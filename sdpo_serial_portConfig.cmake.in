@@ -1,0 +1,13 @@
+# - Config file for the sdpo_serial_port package
+# It defines the following variables
+#  sdpo_serial_port_INCLUDE_DIRS - include directories for FooBar
+#  sdpo_serial_port_LIBRARIES    - libraries to link against
+#  sdpo_serial_port_EXECUTABLE   - the bar executable
+
+set(sdpo_serial_port_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+include("${sdpo_serial_port_DIR}/export_sdpo_serial_port.cmake")
+
+# These are IMPORTED targets created by sdpo_serial_portTargets.cmake
+set(sdpo_serial_port_LIBRARIES sdpo_serial_port)

@@ -1,4 +1,4 @@
-# 5dpo_ros_serial_port
+# [5dpo_serial_port](https://github.com/5dpo/5dpo_serial_port)
 
 **Version 0.1.0**
 
@@ -16,51 +16,39 @@ As for the serial communication, the implementation is based on the example
 
 ## ROS
 
-**Current version:**
+**foxy**
 
-- [Ubuntu 20.04.5 LTS](https://releases.ubuntu.com/focal/)
-- [ROS Noetic](https://wiki.ros.org/noetic)
+- [Ubuntu 20.04.6 LTS](https://releases.ubuntu.com/focal/)
+- [ROS 2 Foxy](https://docs.ros.org/en/foxy/)
+
+**noetic**
+
+- [Ubuntu 20.04.6 LTS](https://releases.ubuntu.com/focal/)
+- [ROS 1 Noetic](https://wiki.ros.org/noetic/)
 
 ### Dependencies
 
 - [roscpp](https://wiki.ros.org/roscpp)
 - [Boost](https://www.boost.org/)
 
-### Parameters
-
-None.
-
-### Subscribes
-
-None.
-
-### Publishes
-
-None.
-
-### Services
-
-None.
-
-### Actions
-
-None.
-
 ## Usage
 
 ### Compilation
 
 ```sh
-# Create catkin workspace
-mkdir -p ~/catkin_ws/src
+# ROS 2
+source /opt/ros/foxy/setup.bash
 
-# Clone repository
-cd ~/catkin_ws/src
-git clone git@github.com:5dpo/5dpo_ros_serial_port.git
+# Create workspace
+mkdir -p ~/ros2_ws/src
+
+# Clone the repository
+cd ~/ros2_ws/src
+git clone git@github.com:5dpo/5dpo_serial_port.git
 
 # Build
-cd ..
-catkin build
+colcon build
+source install/setup.bash
 ```
 
 ### Example
@@ -107,3 +95,14 @@ void closeSerial() {
   }
 }
 ```
+
+## Acknowledges
+
+- [@fedetft](https://github.com/fedetft)
+- [Faculty of Engineering, University of Porto (FEUP)](https://sigarra.up.pt/feup/en/)
+- [INESC TEC - Institute for Systems and Computer Engineering, Technology and Science](https://www.inesctec.pt/en/)
+
+## Contacts
+
+If you have any questions or you want to know more about this work, please
+contact any member of the 5dpo Robotics Team.
