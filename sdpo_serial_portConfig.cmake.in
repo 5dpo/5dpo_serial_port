@@ -7,6 +7,11 @@
 set(sdpo_serial_port_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
 
 # Our library dependencies (contains definitions for IMPORTED targets)
+find_package(Boost REQUIRED COMPONENTS
+  date_time
+  system
+)
+
 include("${sdpo_serial_port_DIR}/export_sdpo_serial_port.cmake")
 
 # These are IMPORTED targets created by sdpo_serial_portTargets.cmake
