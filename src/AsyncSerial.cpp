@@ -27,7 +27,7 @@
  *
  */
 
-#include "sdpo_ros_serial_port/AsyncSerial.h"
+#include "sdpo_serial_port/AsyncSerial.h"
 
 #include <string>
 #include <algorithm>
