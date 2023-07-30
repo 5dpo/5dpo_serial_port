@@ -16,17 +16,19 @@ As for the serial communication, the implementation is based on the example
 
 ## ROS
 
-**foxy**
+**ROS 1**
+
+- [Ubuntu 20.04.6 LTS](https://releases.ubuntu.com/focal/)
+- [ROS Noetic](https://wiki.ros.org/noetic)
+
+**ROS 2**
 
 - [Ubuntu 20.04.6 LTS](https://releases.ubuntu.com/focal/)
 - [ROS 2 Foxy](https://docs.ros.org/en/foxy/)
 
-**noetic**
-
-- [Ubuntu 20.04.6 LTS](https://releases.ubuntu.com/focal/)
-- [ROS 1 Noetic](https://wiki.ros.org/noetic/)
-
 ### Dependencies
+
+**ROS 1**
 
 - [roscpp](https://wiki.ros.org/roscpp)
 - [Boost](https://www.boost.org/)
@@ -35,8 +37,31 @@ As for the serial communication, the implementation is based on the example
 
 ### Compilation
 
+**ROS 1**
+
 ```sh
-# ROS 2
+# ROS 1 environment setup
+source source /opt/ros/noetic/setup.bash
+
+# Create workspace
+mkdir -p ~/ros1_ws/src
+
+# Clone the repository
+cd ~/ros1_ws/src
+git clone git@github.com:5dpo/5dpo_serial_port.git
+
+# Build
+cd ~/ros1_ws
+catkin_make
+# OR catkin_make_isolated (more slow, build and check dependencies individually)
+# OR catkin build (requires the Pyhton-based catkin tools)
+source devel/setup.bash
+```
+
+**ROS 2**
+
+```sh
+# ROS 2 environment setup
 source /opt/ros/foxy/setup.bash
 
 # Create workspace
@@ -47,6 +72,7 @@ cd ~/ros2_ws/src
 git clone git@github.com:5dpo/5dpo_serial_port.git
 
 # Build
+cd ~/ros2_ws
 colcon build
 source install/setup.bash
 ```
