@@ -131,4 +131,4 @@ void closeSerial() {
 ## Contacts
 
 If you have any questions or you want to know more about this work, please
-contact any member of the 5dpo Robotics Team.
+contact any member of the [5dpo Robotics Team](https://5dpo.github.io/).
